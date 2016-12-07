@@ -1,0 +1,58 @@
+1. install npm
+2. insert mongodb depanciese in app.js -> this will be a server
+3. designing routing
+4. decide stati view - 404 / 200 / etc
+
+5. designing main view(layout.jade)
+6. designing member view(index.jade)
+
+7. designing users routes
+<------------------------>
+
+register form
+1. design form
+2. action encription -> multipart/form-data
+
+-------------------------------------------
+
+
+2016.12.04 -> Regist and func
+
+bodyparser cannot handle file
+-> multer use!
+-> req.validationErrors() 
+-> req.checkBody
+
+
+-------------------------------------
+
+mongoose schema
+1. create "model" directory
+2. create mongodb schema
+3. create save logic in models and routes
+
+* show dbs
+* db.users.find()
+------------------------------------
+
+2016.12.06 ->hasing password
+
+var bcrypt = require('bcryptjs')
+
+in model
+module.exports.createUser = function(newUser, callback){
+	bcrypt.genSalt(10, function(err, salt){
+		bcrypt.hash(newUser.password, salt, function(err, hash){
+			newUser.password = hash;
+			newUser.save(callback);
+		});
+	});	
+}
+----------------------------------
+2016.12.06 -> passport<authentication>
+select stratigeyt
+and and hashing!
+
+bcrptjs -> compare func
+
+
