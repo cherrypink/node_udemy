@@ -5,4 +5,10 @@ work flow
 1. make view
 2.  insert dummy data db.shchema.insert()
 3. change routes.index.js
-4. p.meta Posted in #{post.category} by #{post.author} on #{moment(post.date).format("YYYYMMDD")}s
+4. p.meta Posted in #{post.category} by #{post.author} on #{moment(post.date).format("YYYYMMDD")}
+------------------------
+1. add route and edit server
+2. 
+
+------------------------
+1.single pages

@@ -11,8 +11,10 @@ block content
         label Title:
         input.form-control(name="title", type="text")
       .form-group
-        label Category 
+        label Category
         select.form-control(name="category")
+         each category, i in categories 
+          option(value='#{category.name}') #{category.name}
       .form-group
         label Bdoy
         textarea.form-control(name="body", id="body")
@@ -25,3 +27,6 @@ block content
           option(value="JSK") JSK
           option(value="jD") JD
       input.btn.btn-default(name="submit", type="submit", value="Save")
+      script(src='/ckeditor/ckeditor.js')
+      script
+       | CKEDITOR.replace('body');
