@@ -1,0 +1,260 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"match",
+				"fs.rmdir(path, callback);"
+			],
+			[
+				"border-col",
+				"border-color"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"wre",
+				"writeHead"
+			],
+			[
+				"wri",
+				"writeHead"
+			],
+			[
+				"mi",
+				"mimeType"
+			],
+			[
+				"mimeTy",
+				"mimeTypes"
+			],
+			[
+				"metho",
+				"methodOverride"
+			],
+			[
+				"body",
+				"bodyParse"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "pack",
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript"
+			]
+		],
+		"width": 485.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/jskim/Developer/nodejs/nodeauth/views/login.jade",
+		"/Users/jskim/Developer/nodejs/nodeauth/views/layout.jade",
+		"/Users/jskim/Developer/nodejs/nodeauth/public/stylesheets/style.css",
+		"/Users/jskim/Developer/nodejs/nodeauth/node_modules/passport/lib/authenticator.js",
+		"/Users/jskim/Developer/nodejs/nodeauth/views/index.jade",
+		"/Users/jskim/Developer/nodejs/nodeauth/public/stylesheets/bootstrap.css",
+		"/Users/jskim/Developer/nodejs/nodeauth/models/user.js",
+		"/Users/jskim/Developer/nodejs/nodeauth/model/user.js",
+		"/Users/jskim/Developer/nodejs/nodeauth/package.json",
+		"/Users/jskim/Developer/nodejs/nodeauth/app.js",
+		"/Users/jskim/Developer/nodejs/nodeauth/work flow",
+		"/Users/jskim/Developer/nodejs/nodeauth/public/javascripts/bootstrap.js",
+		"/Users/jskim/Developer/nodejs/nodeauth/routes/index.js",
+		"/Users/jskim/Developer/nodejs/nodeauth/routes/users.js",
+		"/Users/jskim/Developer/nodejs/nodeauth/views/register.jade",
+		"/Users/jskim/Developer/ghostJS/ghost-0.11.3/package.json",
+		"/Users/jskim/Developer/nodejs/basicExpressWeb/views/contact.jade",
+		"/Users/jskim/Developer/nodejs/basicExpressWeb/views/index.jade",
+		"/Users/jskim/Developer/nodejs/basicExpressWeb/app.js",
+		"/Users/jskim/Developer/nodejs/basicExpressWeb/views/contact.jade.bk.jade",
+		"/Users/jskim/Developer/nodejs/basicExpressWeb/views/layout.jade",
+		"/Users/jskim/Developer/nodejs/basicExpressWeb/views/about.jade",
+		"/Users/jskim/Developer/nodejs/basicExpressWeb/contact.jade",
+		"/Users/jskim/Developer/nodejs/simpleServer/about.html",
+		"/Users/jskim/Developer/nodejs/simpleServer/server.js",
+		"/Users/jskim/Developer/nodejs/simpleServer/package.json",
+		"/Users/jskim/Developer/nodejs/simpleServer/css/bootstrap.css",
+		"/Users/jskim/Developer/nodejs/simpleServer/index.html",
+		"/Users/jskim/Developer/nodejs/simpleServer/services.html",
+		"/Users/jskim/Developer/nodejs/simpleServer/service.html",
+		"/Users/jskim/Developer/nodejs/simpleServer/page.html",
+		"/Users/jskim/Developer/meetingRoom/app/app.js",
+		"/Users/jskim/Developer/meetingRoom/views/partials/header.ejs",
+		"/Users/jskim/Developer/meetingRoom/template-source/index.html",
+		"/Users/jskim/Developer/meetingRoom/template-source/elements.html",
+		"/Users/jskim/Developer/meetingRoom/views/login.ejs",
+		"/Users/jskim/Developer/meetingRoom/controllers/login.controller.js",
+		"/Users/jskim/Developer/meetingRoom/views/partials/header.ejs1",
+		"/Users/jskim/Developer/meetingRoom/app/index.html",
+		"/Users/jskim/Developer/meetingRoom/app/app-content/app.css",
+		"/Users/jskim/Developer/meeting_room/README.md",
+		"/Users/jskim/Developer/mean-test/client/app/scripts/controllers/about.js",
+		"/Users/jskim/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"if",
+			"_framework",
+			"authenticate",
+			"Button",
+			"submit",
+			"{\n",
+			"=\"../../",
+			"form-container",
+			"ng"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "package.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 158.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

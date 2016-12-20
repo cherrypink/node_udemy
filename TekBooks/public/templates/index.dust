@@ -1,0 +1,7 @@
+{>"layouts/master" /}
+
+{<body}
+	<div class="large-3 columns book">
+	
+	</div>
+{/body}
