@@ -1,0 +1,41 @@
+var express= require('express');
+var routes = express.Router();
+var cassandra = require('cassandra-driver');
+
+var client = new cassandra.Client({
+	contactPoints:['127.0.0.1']
+});
+client.connect(function(err,result){
+	console.log('Cassandra Connected');
+});
+
+
+routes.get('/', function(req,res, next){
+	res.render('categories');
+});
+
+routes.get('/add', function(req,res,next){
+	res.render('add-categories');
+});
+
+routes.post('/add', function(req,res,next){
+	var cat_id = cassandra.types.uuid();
+	var query = "INSERT INTO findadoc.categories(cat_id, name) VALUES (?,?);";
+
+	client.execute(query, 
+			[ 
+			 cat_id
+			, req.body.name
+			], {prepare:true}, function(err, result){
+				if(err){
+					res.status(404).send({msg:err});
+				}else{
+					//req.flash('success', 'Doctor Added');
+					res.location('/doctors');
+					res.redirect('/doctors');
+				}
+			});
+});
+
+
+module.exports = routes;
