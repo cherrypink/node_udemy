@@ -15,10 +15,13 @@ var mongo = require("mongodb");
 var mongoose = require("mongoose");
 mongoose.connect('mongodb://localhost/elearn');
 var db = mongoose.connection;
+async = require('async');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var classes = require('./routes/classes');
+var students = require('./routes/students');
+var instructors = require('./routes/instructors');
 
 
 var app = express();
@@ -69,15 +72,29 @@ app.use(expressValidator({
 //connect-flash
 app.use(flash());
 
+app.get('*', function(req,res, next){
+  res.locals.user = req.user || null;
+  if(req.user){
+    res.locals.type = req.user.type;
+  }
+
+  next();
+});
+
 //global vars
 app.use(function(req,res,next){
-	res.locals.messages = require('express-messages')(req,res);
+	//two global vars
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg  = req.flash('error_msg');
+  res.locals.error  = req.flash('error');
 	next();
 });
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/classes', classes);
+app.use('/students', students);
+app.use('/instructors', instructors);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

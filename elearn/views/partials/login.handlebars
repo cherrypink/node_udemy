@@ -1,8 +1,16 @@
-			<h5>Student & Instructor Login</h5>
-			<form>
-				<label>Username : </label>
-				<input type="text" name="username">
-				<label>Password :  </label>
-				<input type="password" name="password">
-				<input class="button" type="submit" value="submit">
-			</form>
+{{#if user}}
+	<h5> Welcome Back {{user.username}} </h5>
+	<ul class="alt">
+		<li><a href="/{{type}}s/classes">My classes</a></li>
+		<li><a href="/users/logout">Logout</a></li>
+	</ul>
+{{else}}
+<h5>Student & Instructor Login</h5>
+	<form method="post" action="/users/login">
+		<label>Username : </label>
+		<input type="text" name="username">
+		<label>Password :  </label>
+		<input type="password" name="password">
+		<input class="button" type="submit" value="submit">
+	</form>
+{{/if}}
