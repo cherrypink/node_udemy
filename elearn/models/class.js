@@ -30,3 +30,26 @@ module.exports.getClassById = function(id, callback){
 	var objId = mongoose.Schema.ObjectId(id);
 	Class.findOne(objId, callback);
 }
+
+
+module.exports.addLesson = function(info, callback){
+	var class_id = info['class_id'];
+	var lesson_number = info['lesson_number'];
+	var lesson_title = info['lesson_title'];
+	var lesson_body = info['lesson_body'];
+
+	console.log(class_id);
+	Class.findByIdAndUpdate(
+		class_id,
+		{$push:{"lessons":{
+						   lesson_number:lesson_number, 
+						   lesson_title: lesson_title, 
+						   lesson_body : lesson_body
+						  }
+			   }
+		},
+		{safe:true, upsert:true},
+		callback
+		);
+
+}
