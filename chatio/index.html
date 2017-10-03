@@ -33,10 +33,10 @@
 			border:1px #ccc solid;
 			border-radius: 10px;
 			background : #f4f4f4;
-			padding:10px;	
+			padding:10px;
 			margin-left:20px;
 			width:150px;
-			max-height: 200px; 
+			max-height: 200px;
 
 		}
 
@@ -45,13 +45,13 @@
 			border:1px #ccc solid;
 			border-radius: 10px;
 			background : #f4f4f4;
-			padding:10px;	
+			padding:10px;
 			margin-left:20px;
 		}
 
 		#input{
 			height:30px;
-			border : solid 1px #ccc; 
+			border : solid 1px #ccc;
 		}
 	</style>
 </head>
@@ -61,11 +61,16 @@
 			<h2>ChatIO</h2>
 			<p>Create Username : </p>
 			<div id="error">
-				
+
 
 			</div>
 			<form id="usernameForm">
 				<input type="text" size="35" id="username"/>
+				<select name="room" id="room">
+					<option value="room1">room1</option>
+					<option value="room2">room2</option>
+					<option value="room3">room3</option>
+				</select>
 				<input type="submit" value="submit" />
 			</form>
 		</div>
@@ -76,7 +81,7 @@
 				<div id="chatWindow"></div>
 				<form id="messageForm">
 					<input type="text" size="35" id="message" placeholer="Say Something..."/>
-					<input type="submit" value="submit" />					
+					<input type="submit" value="submit" />
 
 				</form>
 			</div>
@@ -100,27 +105,29 @@
 			var $users = $('#users');
 			var $username = $('#username');
 			var $error = $('#error');
+			var $room  = $('#room');
 
 			$usernameForm.submit(function(e){
 				e.preventDefault();
-				socket.emit('new user', $username.val(), function(data){
+				var enterInfo = { 'username' : $username.val() ,
+												  'room'     : $room.val()
+												};
+				socket.emit('new user', enterInfo, function(data){
 					if(data){
 						$('#namesWrapper').hide();
-						$('#mainWrapper').show(); 
+						$('#mainWrapper').show();
 
 					}else{
 						$error.html('Username is taken');
 					}
-
 				});
 
 			});
 
 			socket.on('usernames',function(data){
-
 				var html = '';
 				for(i = 0; i< data.length; i++){
-					html += data[i] + '<br>';
+					html += data[i].username + '<br>';
 				}
 
 				$users.html(html);
@@ -128,19 +135,16 @@
 
 			$messageForm.submit(function(e){
 				e.preventDefault();
-				socket.emit('send message', $message.val());
+				var info = { 'msg' : $message.val(),
+			 							 'room': $room.val()};
+				socket.emit('send message', info);// $message.val());
 				$message.val('');
-
 			});
 
 			socket.on('new message', function(data){
 				console.log(data);
 				$chat.append('<strong>'+data.user +'</strong>'+ ' : ' +data.msg+'<br>');
 			});
-
-
-
-
 		});
 	</script>
 
