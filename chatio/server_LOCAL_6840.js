@@ -26,13 +26,13 @@ io.sockets.on('connection', function(socket){
 	console.log('Socket Connected');
 
 	socket.on('new user', function(data, callback){
-	socket.join(data.room);
-	console.log('Joining the room...'+data.room + ' user is...'+data.username);
+		socket.join(data.room);
+		console.log('Joining the room...'+data.room + ' user is...'+data.username);
 
-	Attend.insertInOutLog(func.returnAttendInfo(data, 'IN'));
-	func.addUserInfoList(data,userInfoList, socket);
-	func.addRoomList(data,roomList, io,socket);
-	Message.loadMessage(data.room, data.currentStart, data.index, callback);
+		Attend.insertInOutLog(func.returnAttendInfo(data, 'IN'));
+		func.addUserInfoList(data,userInfoList, socket);
+		func.addRoomList(data,roomList, io,socket);
+		Message.loadMessage(data.room, data.currentStart, data.index, callback);
 	});
 
 	// Send Message
