@@ -10,6 +10,10 @@
   "license": "ISC",
   "dependencies": {
   	"socket.io": "*",
-  	"express": "*"
+  	"express": "*",
+    "mongodb": "*",
+    "mongoose": "*",
+    "morgan": "~1.7.0",
+    "date-utils":"*"
   }
 }

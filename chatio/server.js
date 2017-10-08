@@ -2,10 +2,20 @@ var express = require('express'),
 	app = express(),
 	server = require('http').createServer(app),
 	io = require('socket.io').listen(server);
-	usernames = [];
+var mongoose = require('mongoose');
+var config = require('./config/config');
+mongoose.connect(config.url);
+var db = mongoose.connection;
+
+var func = require('./func/functions');
+var Attend = require('./models/attend');
+var Message = require('./models/message');
+
+var roomList = {};
+var userInfoList = [];
+	//usernames = [];
 
 server.listen(process.env.PORT || 30000);
-
 console.log('Server running on port');
 
 app.get('/', function(req, res){
@@ -16,35 +26,50 @@ io.sockets.on('connection', function(socket){
 	console.log('Socket Connected');
 
 	socket.on('new user', function(data, callback){
-		if(usernames.indexOf(data) != -1){
-			callback(false);
-		}else {
-			callback(true);
-			socket.username = data;
-			usernames.push(socket.username);
-			updateUsernames();
-		}
-	});;
+		socket.join(data.room);
+		console.log('Joining the room...'+data.room + ' user is...'+data.username);
 
-	//update usernames
-	function updateUsernames(){
-		io.sockets.emit('usernames', usernames);
-	}
+		Attend.insertInOutLog(func.returnAttendInfo(data, 'IN'));
+		func.addUserInfoList(data,userInfoList, socket);
+		func.addRoomList(data,roomList, io,socket);
+		Message.loadMessage(data.room, data.currentStart, data.index, callback);
+	});
 
 	// Send Message
 	socket.on('send message', function(data){
-		console.log(data);
-		console.log(socket);
-		io.sockets.emit('new message', {msg : data, user:socket.username});	
+		var username = '';
+		for(var idx in userInfoList){
+			if(userInfoList[idx].id == socket.id){
+				username = userInfoList[idx].username;
+				break;
+			}
+		};
+		var message = {
+			username : username,
+			room     : data.room,
+			msg      : data.msg
+		}
+		Message.insertMsgLog(message);
+		io.sockets.in(data.room).emit('new message', {msg : data.msg, user:username});
 	});
 
-	//Disconnect 
+	//Disconnect
 	socket.on('disconnect', function(data){
-		if(!socket.username){
+		if(userInfoList.length == 0){
 			return;
 		}
+		var exitUser = '';
+		for(var idx in userInfoList){
+			if(userInfoList[idx].id == socket.id){
+				exitUser = userInfoList[idx];
+				break;
+			}
+		}
+		var room = exitUser.room;
+		var id   = exitUser.id;
+		userInfoList.splice(idx,1);
 
-		usernames.splice(usernames.indexOf(socket.username), 1);
-		updateUsernames();
-	})
+		Attend.insertInOutLog(func.returnAttendInfo(exitUser, 'OUT'));
+		func.updateRoomList(room, id,roomList, io);
+	});
 });
