@@ -1,98 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Chat IO</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>CHATIo</title>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<style>
-		body{
-			background: #f9f9f9;
-
-		}
+	
 		#container{
-			width:700px;
-			margin: 0 auto;
+/* 			border: 2px solid #ffffff;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 6px; */
 		}
-
-		#chatWindow{
-			height:300px;
-		}
-
 		#mainWrapper{
 			display:none;
 		}
 
 		#chatWrapper{
-			float:left;
-			border:1px #ccc solid;
-			border-radius: 10px;
-			background : #f4f4f4;
-			padding:10px;
+			/* border: 1px #ccc solid;
+    border-radius: 10px;
+    background: rgba(233, 255, 175, 0.46);
+    padding: 10px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    border-right:solid #ff920a 2px;
+    min-height:200px; */
 		}
 
 		#userWrapper{
-			float:left;
-			border:1px #ccc solid;
-			border-radius: 10px;
-			background : #f4f4f4;
-			padding:10px;
-			margin-left:20px;
-			width:150px;
-			max-height: 200px;
+
 
 		}
 
 		#namesWrapper{
-			float:left;
-			border:1px #ccc solid;
-			border-radius: 10px;
-			background : #f4f4f4;
-			padding:10px;
-			margin-left:20px;
-		}
+	
+					}
 
-		#input{
+	/* 	#input{
 			height:30px;
 			border : solid 1px #ccc;
 		}
+		 */
 	</style>
 </head>
-<body>
-	<div id = "container">
+<body style="font-family:Verdana">
+	<div class="container" id = "container" >
 		<div id ="namesWrapper">
 			<h2>ChatIO</h2>
-			<p>Create Username : </p>
+			<p>Create UserName : </p>
 			<div id="error">
-
-
 			</div>
 			<form id="usernameForm">
-				<input type="text" size="35" id="username"/>
+				<input type="text"id="username"/>
 				<select name="room" id="room">
 					<option value="room1">room1</option>
 					<option value="room2">room2</option>
 					<option value="room3">room3</option>
 				</select>
-				<input type="submit" value="submit" />
+				<input class="btn btn-success" type="submit" value="submit" />
 			</form>
 		</div>
+<div class="row " style="padding-top:40px;">
+<br />
+    <div class="col-md-8">
+        <div class="panel panel-info" id="mainWrapper" >
+            <div class="panel-heading">
+                RECENT CHAT HISTORY
+            </div>
+            <div class="panel-body" id="chatWrapper">					
+<!-- 			<div id="chatWrapper"> -->
+<ul class="media-list">
 
-		<div id="mainWrapper">
-			<h2>ChatIO</h2>
-			<div id="chatWrapper">
-				<div id="chatWindow"></div>
+                                    <li class="media">
+                                        <div class="media-body" id="chatWindow"></div>
+                                        </li>
+                                        </ul>
+                                        <div class="panel-footer">
+                <div class="input-group">
 				<form id="messageForm">
-					<input type="text" size="35" id="message" placeholer="Say Something..."/>
+					<input type="text" id="message" placeholer="Say Something..."/>
 					<input type="submit" value="submit" />
 
 				</form>
+				</div>
+				</div>
 			</div>
-			<div id="userWrapper">
-				<div id="users"></div>
-
-			</div>
+			
 		</div>
-
+		 <div class="col-md-4">
+          <div class="panel panel-primary">
+          <div class="panel-heading">
+               CURRENT USERS
+            </div>
+		<div id="users"></div>
+		</div>
+		</div>
+</div>
 	</div>
-
+</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
