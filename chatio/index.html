@@ -1,99 +1,319 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Chat IO</title>
-	<style>
-		body{
-			background: #f9f9f9;
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+<title>CHATIo</title>
+<!-- 
+<!-- BOOTSTRAP CORE STYLE CSS -->
+<!-- <link rel="stylesheet" href="/bootstrap_chat.css"> -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
-		}
-		#container{
-			width:700px;
-			margin: 0 auto;
-		}
+<link rel='stylesheet prefetch'
+	href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+<link rel='stylesheet prefetch'
+	href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 
-		#chatWindow{
-			height:300px;
-		}
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<style>
+#mainWrapper {
+	display: none;
+}
 
-		#mainWrapper{
-			display:none;
-		}
+#chatWrapper {
+	/* border: 1px #ccc solid;
+    border-radius: 10px;
+    background: rgba(233, 255, 175, 0.46);
+    padding: 10px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    border-right:solid #ff920a 2px;
+    min-height:200px; */
+	
+}
 
-		#chatWrapper{
-			float:left;
-			border:1px #ccc solid;
-			border-radius: 10px;
-			background : #f4f4f4;
-			padding:10px;
-		}
+body {
+	margin: 0 auto;
+	max-width: 800px;
+	padding: 0 20px;
+}
 
-		#userWrapper{
-			float:left;
-			border:1px #ccc solid;
-			border-radius: 10px;
-			background : #f4f4f4;
-			padding:10px;
-			margin-left:20px;
-			width:150px;
-			max-height: 200px;
+.container1 {
+	border: 1px solid rgba(51, 51, 51, 0.12);
+	background-color: #f0ecf8;
+	/* border-radius: 3px; */
+	/* padding: 3px 2px; */
+	margin: 6px 0;
+	width: 70%;
+	border-radius: 5px;
+}
 
-		}
+.darker {
+	float: right;
+	border-color: rgba(42, 7, 7, 0.22);
+	background-color: rgb(169, 227, 183);
+	width: 60%;
+	border-radius: 8px;
+	margin-bottom: 5px;
+}
 
-		#namesWrapper{
-			float:left;
-			border:1px #ccc solid;
-			border-radius: 10px;
-			background : #f4f4f4;
-			padding:10px;
-			margin-left:20px;
-		}
+.container1::after {
+	content: "";
+	clear: both;
+	display: table;
+}
 
-		#input{
-			height:30px;
-			border : solid 1px #ccc;
-		}
-	</style>
+.container1 img {
+	float: left;
+	max-width: 60px;
+	width: 100%;
+	margin-right: 20px;
+	border-radius: 50%;
+}
+
+.container1.right {
+	font-weight: 700;
+	float: right;
+	margin-left: 20px;
+	margin-right: 0;
+}
+
+li {
+	list-style: none;
+}
+
+.balloon {
+	position: relative;
+	display: inline-block;
+}
+
+.balloon span {
+	display: inline-block;
+	padding: 5px;
+	color: #333;
+	background: #f0ecf8;
+	border-radius: 5px;
+}
+
+.balloon span#me {
+	display: inline-block;
+	padding: 5px;
+	color: #333;
+	background: rgba(157, 223, 171, 0.18);
+	border-radius: 5px;
+}
+
+.balloon:after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-style: solid;
+}
+
+.balloon.test_2:after {
+	border-color: transparent transparent rgba(125, 25, 25, 0)
+		rgb(169, 227, 183);
+	right: -19px;
+}
+
+.balloon.test_1:after, .balloon.test_2:after {
+	border-width: 10px 10px;
+	top: 50%;
+	margin-left: -10px;
+}
+
+.balloon.test_3:after, .balloon.test_4:after {
+	border-width: 10px 15px;
+	top: 50%;
+	margin-top: -10px;
+}
+
+.balloon.test_1:after {
+	border-color: #7d1919 transparent transparent transparent;
+	bottom: -25px;
+}
+
+.balloon.test_3:after {
+	border-color: transparent #f0ecf8 transparent transparent;
+	left: -25px;
+}
+
+.balloon.test_4:after {
+	border-color: transparent transparent transparent #aad6e3 right:-25px;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	outline: none;
+}
+
+.login-form {
+	margin: 50px auto;
+	max-width: 360px;
+}
+
+.login-form>section {
+	text-align: center;
+	margin-top: 15px;
+}
+
+.login-form>section img {
+	margin-bottom: 20px;
+}
+
+.login-form>section a {
+	color: #657fed;
+}
+
+.login-form h4 {
+	font-weight: normal;
+	font-size: 20px;
+	color: #737373;
+	margin-bottom: 20px;
+}
+
+form[role=login] {
+	font: 15px/2.2em Lato, serif;
+	color: #555;
+	background: #f7f7f7;
+	padding: 40px;
+	-webkit-box-shadow: 0 3px 3px 0 rgba(50, 50, 50, 0.2);
+	-moz-box-shadow: 0 3px 3px 0 rgba(50, 50, 50, 0.2);
+	box-shadow: 0 3px 3px 0 rgba(50, 50, 50, 0.2);
+}
+
+form[role=login] img {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 25px;
+}
+
+form[role=login] input, form[role=login] button {
+	font-size: 17px;
+}
+
+form[role=login] input {
+	color: #989898;
+	background: #fff;
+	border: 1px solid #c0c0c0;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	box-shadow: none;
+	margin: 0;
+	position: relative;
+	z-index: 999;
+}
+
+form[role=login] input:focus {
+	z-index: 1000;
+}
+
+form[role=login] input[type=email] {
+	margin-bottom: -1px;
+}
+
+form[role=login] input::-webkit-input-placeholder {
+	color: #c0c0c0;
+}
+
+form[role=login] input:-moz-placeholder {
+	color: #c0c0c0;
+}
+
+form[role=login] input::-moz-placeholder {
+	color: #c0c0c0;
+}
+
+form[role=login] input:-ms-input-placeholder {
+	color: #c0c0c0;
+}
+
+form[role=login] button {
+	font-size: 14px;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #4082ef;
+	border: 1px solid #3b88c3;
+	background: #52a6e6;
+	margin-top: 15px;
+	margin-bottom: 8px;
+	-webkit-box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, .3);
+	-moz-box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, .3);
+	box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, .3);
+}
+</style>
 </head>
-<body>
-	<div id = "container">
-		<div id ="namesWrapper">
-			<h2>ChatIO</h2>
-			<p>Create Username : </p>
-			<div id="error">
+<body style="font-family: Verdana">
+	<section class="container">
+		<section class="login-form" id="namesWrapper">
+			<section>
 
+				<h4>Create Your Nickname</h4>
+			</section>
+			<form id="usernameForm" role="login">
 
-			</div>
-			<form id="usernameForm">
-				<input type="text" size="35" id="username"/>
-				<select name="room" id="room">
+				<input type="text" name="username" required placeholder="NickName"
+					id="username" class="form-control input-lg" /> <br> <select
+					class="form-control" name="room" id="room">
 					<option value="room1">room1</option>
 					<option value="room2">room2</option>
 					<option value="room3">room3</option>
 				</select>
-				<input type="submit" value="submit" />
+				<button type="submit" name="submit" class="btn btn-block btn-info">Submit</button>
 			</form>
-		</div>
+		</section>
+	</section>
 
-		<div id="mainWrapper">
-			<h2>ChatIO</h2>
-			<div id="chatWrapper">
-				<div id="chatWindow"></div>
+	<!-- 로그인 마지막/ CHAT 시작부분 -->
+	<div id="mainWrapper">
+		
+		<h4 style="font-weight: 700; margin-top: 28px;">
+			<span class="glyphicon glyphicon-comment"></span>&nbsp;RECENT CHAT
+			HISTORY
+		</h4>
+		<!-- 					<div class="col-md-8">
+					<div class="panel panel-primary">
+						<div class="panel-heading">CURRENT USERS</div>
+						<div id="users"></div>
+					</div>
+				</div> -->
+		<div id="chatWrapper">
+			<div id="chatWindow"></div>
+
+			<div style="margin-top: 18%;">
 				<form id="messageForm">
-					<input type="text" size="35" id="message" placeholer="Say Something..."/>
-					<input type="submit" value="submit" />
-
+					<div class="form-group">
+						<input class="form-control" style="background-color: #fff;"
+							type="text" id="message" placeholder="Say Something..." /> <input
+							class="btn btn-success" type="submit" value="submit"
+							style="margin-top: 5px;" />
+					</div>
 				</form>
-			</div>
-			<div id="userWrapper">
-				<div id="users"></div>
 
 			</div>
 		</div>
 
 	</div>
+	<br>
+	<br>
 
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+							<div id="users"></div>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		crossorigin="anonymous"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
 		$(function(){
@@ -121,7 +341,7 @@
 						$('#namesWrapper').hide();
 						$('#mainWrapper').show();
 						data.forEach(function(msg){
-							$chat.append('<strong>'+msg.username +'</strong>'+ ' : ' +msg.message+'<br>');
+							$chat.append('<li><div class="container1 balloon test_3"><span><strong>'+msg.username +'</strong>'+'<p>'+msg.message+'</p></span></div></li>');
 						});
 					}else{
 						$error.html('Username is taken');
@@ -148,7 +368,7 @@
 			});
 
 			socket.on('new message', function(data){
-				$chat.append('<strong>'+data.user +'</strong>'+ ' : ' +data.msg+'<br>');
+				$chat.append('<li><div class="darker balloon test_2"><span id="me"><strong class="right">'+data.user +'<p>'+data.msg+'</p></strng></span></div></li>');
 			});
 		});
 	</script>
